@@ -1,0 +1,20 @@
+<section class="row g-3 mt-3">
+  <select class="form-select mb-2 w-75 m-auto" (change)="getDataCourse($event)">
+    <option value="" selected>Selecciona una opción</option>
+    <option value="1eso">1 ESO</option>
+    <option value="2eso">2 ESO</option>
+    <option value="3eso">3 ESO</option>
+    <option value="4eso">4 ESO</option>
+  </select>
+  <div
+    *ngIf="this.alumnos.length !== 0; then contentTrue; else contentFalse"
+  ></div>
+  <ng-template #contentTrue>
+    <article class="col-12 col-md-6 col-lg-4" *ngFor="let alumno of alumnos">
+      <app-alumno-card [miAlumno]="alumno"></app-alumno-card>
+    </article>
+  </ng-template>
+  <ng-template #contentFalse>
+    <h3>No hay alumnos de ese curso</h3>
+  </ng-template>
+</section>
